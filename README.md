@@ -16,7 +16,7 @@ Conway's Game of Life is a cellular automation devised by British mathematician 
 
 In this world time moves as with each iteration, and all the cells obey a set of four rules.
 
-They are as follows
+Rules:
 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
 2. Any live cell with two or three live neighbors lives on to the next generation.
