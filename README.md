@@ -1,5 +1,5 @@
 
-# Welcome to Conway's Game of Life in Python
+# Conway's Game of Life in Python
 
 A python implementation of the interesting Conway's Game of Life
 
