@@ -5,7 +5,7 @@ import math
 pygame.init()
 pygame.display.set_caption("Conway's The Game of Life")
 
-
+fps = 60
 screen_size = (1000, 1000)
 step = 10  # 1% of screen width
 padding = 50  # 5% of screen width
@@ -212,6 +212,6 @@ while running:
         world.update_live_world_map(live_world_map)
 
     pygame.display.flip()
-    dt = clock.tick(30) / 1000
+    dt = clock.tick(fps) / 1000
 
 pygame.quit()
