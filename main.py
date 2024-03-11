@@ -174,15 +174,16 @@ while running:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
                 world.start_world()
-
-            if keys[pygame.K_UP]:
-                world.generate_world_pattern()
-
-            if keys[pygame.K_c]:
-                world.clear_world()
-
+            
             if keys[pygame.K_ESCAPE] or keys[pygame.K_q]:
                 running = False
+
+            if not world.running:
+                if keys[pygame.K_UP]:
+                    world.generate_world_pattern()
+
+                if keys[pygame.K_c]:
+                    world.clear_world()
 
         elif event.type == pygame.MOUSEBUTTONDOWN and not world.running:
             button = event.button
