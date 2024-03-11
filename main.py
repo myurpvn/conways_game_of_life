@@ -5,9 +5,9 @@ import math
 pygame.init()
 pygame.display.set_caption("Conway's The Game of Life")
 
-fps = 60
+fps = 30
 screen_size = (1000, 1000)
-step = 10  # 1% of screen width
+step = 5  # 1% of screen width
 padding = 50  # 5% of screen width
 grid_size = (screen_size[0] - padding * 2, screen_size[1] - padding * 2)
 
@@ -76,7 +76,7 @@ class Square:
 
 
 class World:
-    max_population = 4000
+    max_population = min(5000, screen_size[0] * screen_size[1] // step ** 2)
 
     def __init__(self) -> None:
         self.world_map: dict[str, Square] = {}
@@ -185,7 +185,7 @@ while running:
                 if keys[pygame.K_c]:
                     world.clear_world()
 
-        elif event.type == pygame.MOUSEBUTTONDOWN and not world.running:
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             button = event.button
             pos = event.pos
             world.handle_click(button, pos)
