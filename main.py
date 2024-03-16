@@ -76,7 +76,7 @@ class Square:
 
 
 class World:
-    max_population = min(5000, screen_size[0] * screen_size[1] // step ** 2)
+    max_population = min(5000, screen_size[0] * screen_size[1] // step**2)
 
     def __init__(self) -> None:
         self.world_map: dict[str, Square] = {}
@@ -174,7 +174,7 @@ while running:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
                 world.start_world()
-            
+
             if keys[pygame.K_ESCAPE] or keys[pygame.K_q]:
                 running = False
 
