@@ -2,13 +2,15 @@ import pygame
 import random
 import math
 
+from constants import POPULATION, SCREEN_X, SCREEN_Y, FPS, STEP, PADDING
+
 pygame.init()
 pygame.display.set_caption("Conway's The Game of Life")
 
-fps = 30
-screen_size = (1000, 1000)
-step = 5  # 1% of screen width
-padding = 50  # 5% of screen width
+fps = FPS
+screen_size = (SCREEN_X, SCREEN_Y)
+step = STEP
+padding = PADDING
 grid_size = (screen_size[0] - padding * 2, screen_size[1] - padding * 2)
 
 screen = pygame.display.set_mode(screen_size)
@@ -76,7 +78,7 @@ class Square:
 
 
 class World:
-    max_population = min(5000, screen_size[0] * screen_size[1] // step**2)
+    max_population = min(POPULATION, screen_size[0] * screen_size[1] // step**2)
 
     def __init__(self) -> None:
         self.world_map: dict[str, Square] = {}
