@@ -7,5 +7,5 @@ SCREEN_Y = 1000
 STEP = 5
 PADDING = 50
 
-# cell propetrties
+# cell properties
 POPULATION = 5000
