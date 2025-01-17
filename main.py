@@ -10,18 +10,18 @@ pygame.display.set_caption("Conway's The Game of Life")
 
 GRID_SIZE = (SCREEN_X - PADDING * 2, SCREEN_Y - PADDING * 2)
 
-screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
+screen: pygame.Surface = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
 clock = pygame.time.Clock()
 
 
 class Square:
-    width = STEP - 2
-    height = STEP - 2
+    width: int = STEP - 2
+    height: int = STEP - 2
 
     def __init__(self, center: str, center_xy: pygame.Vector2) -> None:
-        self.center = center
-        self.center_x = center_xy.x
-        self.center_y = center_xy.y
+        self.center: str = center
+        self.center_x: float = center_xy.x
+        self.center_y: float = center_xy.y
         self.alive = False
 
     def populate(self) -> None:
@@ -56,7 +56,7 @@ class Square:
 
     def count_neighbours(self, live_squares: set):
 
-        steps = [-STEP, 0, STEP]
+        steps: list[int] = [-STEP, 0, STEP]
         live_neighbours = []
         all_neighbours = []
 
@@ -75,11 +75,11 @@ class Square:
 
 
 class World:
-    max_population = min(POPULATION, SCREEN_X * SCREEN_Y // STEP**2)
+    max_population: int = min(POPULATION, SCREEN_X * SCREEN_Y // STEP**2)
 
     def __init__(self) -> None:
         self.world_map: dict[str, Square] = {}
-        self.live_world_map: set = ()
+        self.live_world_map: set = set()
         self.running: bool = False
 
     def __clean_world(self) -> None:
@@ -89,7 +89,7 @@ class World:
                     square_obj.alive = False
 
     def clear_world(self) -> None:
-        self.live_world_map = ()
+        self.live_world_map = set()
         self.__clean_world()
 
     def start_world(self) -> None:
@@ -101,12 +101,12 @@ class World:
     def handle_click(self, button: int, pos: tuple[int, int]) -> None:
         self.__clean_world()
 
-        min_dist = math.sqrt(SCREEN_X**2 + SCREEN_Y**2)
+        min_dist: float = math.sqrt(SCREEN_X**2 + SCREEN_Y**2)
         current_live_squares = list(self.live_world_map)
 
-        clicked_square = ""
+        clicked_square: str = ""
         for center, square in self.world_map.items():
-            dist = pygame.math.Vector2(pos).distance_to(
+            dist: float = pygame.math.Vector2(pos).distance_to(
                 (square.center_x, square.center_y)
             )
             if dist < min_dist:
@@ -128,7 +128,7 @@ class World:
         world_map = {}
         for y in range(PADDING - 1, GRID_SIZE[1] + PADDING, STEP):
             for x in range(PADDING - 1, GRID_SIZE[0] + PADDING, STEP):
-                center = f"c{x},{y}"
+                center: str = f"c{x},{y}"
                 world_map[center] = Square(
                     center=f"c{x},{y}", center_xy=pygame.Vector2(x, y)
                 )
@@ -199,7 +199,7 @@ while running:
     live_world_map = list(world.live_world_map)
     if world.running:
         for center, square in world.world_map.items():
-            n_count = square.count_neighbours(world.live_world_map)
+            n_count: int = square.count_neighbours(world.live_world_map)
             if square.alive:
                 if n_count < 2 or n_count > 3:
                     live_world_map.remove(center)
@@ -212,6 +212,6 @@ while running:
         world.update_live_world_map(live_world_map)
 
     pygame.display.flip()
-    dt = clock.tick(FPS) / 1000
+    dt: float = clock.tick(FPS) / 1000
 
 pygame.quit()

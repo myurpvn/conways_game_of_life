@@ -8,4 +8,4 @@ STEP = 5
 PADDING = 50
 
 # cell properties
-POPULATION = 5000
+POPULATION = 10000
