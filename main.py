@@ -1,7 +1,7 @@
 import pygame
 
 from constants import FPS
-from models import World, screen
+from models import World
 
 pygame.init()
 pygame.display.set_caption("Conway's The Game of Life")
@@ -15,7 +15,7 @@ dt = 0
 running = True
 clock = pygame.time.Clock()
 while running:
-    screen.fill("black")
+    world.surface.fill("black")
 
     for event in pygame.event.get():
 

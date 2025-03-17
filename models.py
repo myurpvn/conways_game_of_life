@@ -72,6 +72,7 @@ class Square:
 
 class World:
     max_population: int = min(POPULATION, SCREEN_X * SCREEN_Y // STEP**2)
+    surface = screen
 
     def __init__(self) -> None:
         self.world_map: dict[str, Square] = {}
