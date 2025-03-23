@@ -98,7 +98,7 @@ class World:
     def handle_click(self, button: int, pos: tuple[int, int]) -> None:
         self.__clean_world()
 
-        min_dist: float = math.sqrt(SCREEN_X**2 + SCREEN_Y**2)
+        min_dist: float = math.inf
         current_live_squares = list(self.live_world_map)
 
         clicked_square: str = ""

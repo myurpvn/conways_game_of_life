@@ -69,6 +69,6 @@ while running:
         world.update_live_world_map(live_world_map)
 
     pygame.display.flip()
-    dt: float = clock.tick(FPS) / 1000
+    dt = clock.tick(FPS) / 1000
 
 pygame.quit()
